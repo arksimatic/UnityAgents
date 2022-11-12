@@ -20,18 +20,15 @@ public class Wolf: Agent
         "WolfStreet",
     };
 
-    public int hungary = 100;
-    [SerializeField] private int minHungarLevel = 30;
-
-    private void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         info.text = _names[Mathf.FloorToInt(Random.Range(0, _names.Count))];
     }
 
-  
-
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
         if (IsHungry())
         {
             SelectTargetToEat();
@@ -41,13 +38,5 @@ public class Wolf: Agent
     {
         
     }
-    private bool IsHungry()
-    {
-        if (hungary < minHungarLevel)
-        {
-            return true;
-        }
 
-        return false;
-    }
 }

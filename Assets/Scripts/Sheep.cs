@@ -18,9 +18,7 @@ public class Sheep:Agent
         "Sawyer",
     };
     
-    public int hungary;
-
-    private void Awake()
+    protected override void Awake()
     {
         info.text = _names[Mathf.FloorToInt(Random.Range(0, _names.Count))];
     }
