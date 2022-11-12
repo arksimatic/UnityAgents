@@ -10,11 +10,11 @@ public class ChickenMealSpawner : MonoBehaviour
 
    private void Start()
    {
-      InvokeRepeating(nameof(SpawnMeal),2f,3f);
+      InvokeRepeating(nameof(SpawnMeal), 2f ,3f);
    }
 
    private void SpawnMeal()
    {
-      Instantiate(chickenMealPrefab,new Vector3(Random.Range(-10f,10f),0,Random.Range(-10f,10f)),Quaternion.identity);
+      Instantiate(chickenMealPrefab, new Vector3(Random.Range(-10f, 10f), 0, Random.Range(-10f, 10f)), Quaternion.identity);
    }
 }
