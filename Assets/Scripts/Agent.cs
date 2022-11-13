@@ -26,12 +26,14 @@ public class Agent : MonoBehaviour
 
     protected virtual void Awake()
     {
-
+        
     }
 
     protected virtual void Update()
     {
         hungarySlider.value = hungary;
+        if (hungary < 0)
+            Die();
     }
 
     protected void SelectNewDestination()
@@ -62,5 +64,10 @@ public class Agent : MonoBehaviour
     {
         int newHungaryLevel = Math.Min(hungary + foodValue, maxHungeryLevel);
         hungary = newHungaryLevel;
+    }
+
+    protected void Die()
+    {
+        Destroy(this.gameObject);
     }
 }
