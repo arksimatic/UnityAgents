@@ -39,4 +39,9 @@ public class Wolf: Agent
         
     }
 
+    public void Eat(Sheep poorSheepVictim)
+    {
+        base.Eat();
+        Destroy(poorSheepVictim);
+    }
 }

@@ -9,12 +9,16 @@ using UnityEngine.UI;
 public class Agent : MonoBehaviour
 {
     public int hungary;
-    [SerializeField] private int maxHungeryLevel = 100;
-    [SerializeField] private int minHungarLevel = 30;
-    [SerializeField] private int hungaryLossPerSecond = 1;
-    private const int defaultFoodValue = 100;
-    [SerializeField] private List<Behavior> behaviors; //TODO make it one again 
-    [SerializeField] private Slider hungarySlider;
+    [SerializeField] protected int maxHungeryLevel = 100;
+    [SerializeField] protected int minHungarLevel = 30;
+    [SerializeField] protected int hungaryLossPerSecond = 1;
+    [SerializeField] private const int defaultFoodValue = 100;
+    [SerializeField] protected List<Behavior> behaviors; //TODO make it one again 
+    [SerializeField] protected Slider hungarySlider;
+
+    protected GameObject WOLVES;
+    protected GameObject SHEEPS;
+    protected GameObject MEALS;
 
     protected virtual void Start()
     {
@@ -22,6 +26,9 @@ public class Agent : MonoBehaviour
         InvokeRepeating(nameof(SelectNewDestination), 2f, 2f);
         StartCoroutine(HungaryMore());
         hungarySlider.GetComponent<Slider>().maxValue = maxHungeryLevel;
+        WOLVES = GameObject.Find("WOLVES");
+        SHEEPS = GameObject.Find("SHEEPS");
+        MEALS = GameObject.Find("MEALS");
     }
 
     protected virtual void Awake()
@@ -43,12 +50,7 @@ public class Agent : MonoBehaviour
 
     protected bool IsHungry()
     {
-        if (hungary < minHungarLevel)
-        {
-            return true;
-        }
-
-        return false;
+        return hungary < minHungarLevel ? true : false;
     }
 
     protected IEnumerator HungaryMore()
@@ -69,5 +71,10 @@ public class Agent : MonoBehaviour
     protected void Die()
     {
         Destroy(this.gameObject);
+    }
+
+    protected void Eat()
+    {
+        hungary = maxHungeryLevel;
     }
 }
