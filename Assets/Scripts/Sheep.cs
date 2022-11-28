@@ -18,14 +18,10 @@ public class Sheep:Agent
         "Sawyer",
     };
     
-    protected override void Awake()
+    public int hungary;
+
+    private void Awake()
     {
         info.text = _names[Mathf.FloorToInt(Random.Range(0, _names.Count))];
-    }
-
-    public void Eat(ChickenMeal meal)
-    {
-        base.Eat();
-        Destroy(meal);
     }
 }
