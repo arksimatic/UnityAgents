@@ -30,7 +30,8 @@ public class Patrol: IState
     }
     public void OnEnter()
     {
-        Debug.Log("Patrol enter");
+        _patrolRobot.notified = false;
+        _patrolRobot.textMeshPro.text = "Patrol";
         _targetIsSet = false;
         _patrolPoints.ForEach(point=>point.onRobotEnter.AddListener(()=>SelectNextPoint(point)));
         var nearestPatrolPoint = _patrolPoints.OrderBy(point => Vector3.Distance(point.transform.position, _patrolRobot.transform.position)).First();
@@ -52,6 +53,5 @@ public class Patrol: IState
     }
     public void OnExit()
     {
-        Debug.Log("Patrol exit");
     }
 }

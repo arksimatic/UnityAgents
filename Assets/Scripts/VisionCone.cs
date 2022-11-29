@@ -8,27 +8,21 @@ public class VisionCone : MonoBehaviour
     public MeshRenderer meshRenderer;
     public Color red;
     public Color yellow;
-    public bool enemySpotted;
-    private float _timeInRange;
-    public float TimeInRange => _timeInRange;
+    public PlayerController enemySpotted;
+    
 
     private void OnTriggerEnter(Collider other)
     {
         onEnemySpotted.Invoke(other.transform.position);
-        enemySpotted = true;
+        enemySpotted = other.GetComponent<PlayerController>();
         ChangeColorToRed();
     }
-
-    private void OnTriggerStay(Collider other)
-    {
-        _timeInRange += Time.deltaTime;
-    }
+    
 
     private void OnTriggerExit(Collider other)
     {
         print("OnTriggerExit");
-        enemySpotted = false;
-        _timeInRange = 0;
+        enemySpotted = null;
         ChangeColorToYellow();
     }
     private void ChangeColorToRed()
