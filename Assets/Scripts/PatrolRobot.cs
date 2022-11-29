@@ -47,6 +47,7 @@ public class PatrolRobot : MonoBehaviour
         var recharge = new Recharge(this);
         
         AddAnyTransition(recharge,LowEnergy());
+        
         AddTransition(recharge,patrol,Recharged());
         
         AddTransition(patrol,notify,EnemyIsVisible());
