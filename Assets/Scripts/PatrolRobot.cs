@@ -4,6 +4,7 @@ using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
+using Random = UnityEngine.Random;
 
 public class PatrolRobot : MonoBehaviour
 {
@@ -87,11 +88,19 @@ public class PatrolRobot : MonoBehaviour
         _alarmInstance.SetActive(false);
         _energy = maxEnergy;
         
+        InvokeRepeating(nameof(TakeSomeEnergy),1,1f);
+        
     }
 
+    private void TakeSomeEnergy()
+    {
+        TakeEnergy(Random.Range(0,3));
+        navMeshAgent.speed = Mathf.Lerp(1, 5, _energy/100f);
+    }
     private void AddTransition(IState from, IState to, Func<bool> condition) => _stateMachine.AddTransition(from, to, condition);
     private void AddAnyTransition(IState to, Func<bool> condition) => _stateMachine.AddAnyTransition(to, condition);
 
+    
     public void SetDestination(Vector3 transformPosition)
     {
         navMeshAgent.SetDestination(transformPosition);
@@ -100,7 +109,6 @@ public class PatrolRobot : MonoBehaviour
     private void Update()
     {
         _stateMachine.Tick();
-        energyStatus.text = _energy + "%";
     }
 
     public void SendSignal()

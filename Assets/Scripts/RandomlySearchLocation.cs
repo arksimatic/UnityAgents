@@ -19,7 +19,7 @@ public class RandomlySearchLocation:IState
         _patrolRobot.textMeshPro.text = "Searching !";
         _patrolRobot.navMeshAgent.ResetPath();
         _patrolRobot.time = 0;
-        _patrolRobot.SetDestination(_patrolRobot.transform.position + _patrolRobot.transform.forward * 5f);
+        _patrolRobot.SetDestination(_patrolRobot.transform.position + _patrolRobot.transform.forward * 10f);
     }
     public void OnExit()
     {
