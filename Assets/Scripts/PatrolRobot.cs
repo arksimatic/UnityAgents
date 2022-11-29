@@ -149,7 +149,8 @@ public class PatrolRobot : MonoBehaviour
         energyStatus.text = _energy + "%";
     }
     public void TakeEnergy(int energy)
-    { 
+    {
+        if (energy == 0) return;
         _energy -= energy;
         energyStatus.text = _energy + "%";
     }
