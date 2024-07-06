@@ -39,16 +39,10 @@ public class Patrol: IState
     }
     private void SelectNextPoint(PatrolPoint patrolPoint)
     {
-        if(patrolPoint!=_currentPoint) return;
-        if (_indexOfCurrentPoint == _patrolPoints.Count -1)
-        {
-            _indexOfCurrentPoint = 0;
-        }
-        else
-        {
-            _indexOfCurrentPoint++;
-        }
+        if(patrolPoint !=_currentPoint) 
+            return;
 
+        _indexOfCurrentPoint = Random.Range(0, _patrolPoints.Count);
         _targetIsSet = false;
     }
     public void OnExit()

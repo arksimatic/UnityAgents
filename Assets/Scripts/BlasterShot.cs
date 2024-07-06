@@ -8,7 +8,7 @@ public class BlasterShot : MonoBehaviour
     {
         direction.Normalize();
         transform.up = direction;
-        GetComponent<Rigidbody>().velocity = direction * _speed;
+        GetComponent<Rigidbody>().linearVelocity = direction * _speed;
     }
     
     private void Start()

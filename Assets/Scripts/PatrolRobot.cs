@@ -37,6 +37,10 @@ public class PatrolRobot : MonoBehaviour
 
     private void Awake()
     {
+        SetStateMachine();
+    }
+    public void SetStateMachine()
+    {
         _stateMachine = new StateMachine();
 
         var patrol = new Patrol(this, patrolPoints);
@@ -155,3 +159,8 @@ public class PatrolRobot : MonoBehaviour
         energyStatus.text = _energy + "%";
     }
 }
+
+
+
+
+

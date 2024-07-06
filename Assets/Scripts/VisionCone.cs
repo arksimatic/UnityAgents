@@ -13,9 +13,10 @@ public class VisionCone : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        onEnemySpotted.Invoke(other.transform.position);
-        enemySpotted = other.GetComponent<PlayerController>();
-        ChangeColorToRed();
+        //onEnemySpotted.Invoke(other.transform.position);
+        //enemySpotted = other.GetComponent<PlayerController>();
+        Destroy(other.transform.gameObject);
+        //ChangeColorToRed();
     }
     
 
